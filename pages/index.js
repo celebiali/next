@@ -7,15 +7,17 @@ function HomePage() {
           geliştiriyorum.
         </h1>
       </div>
-      <img
-        style={{
-          width: 350,
-          height: 350,
-          borderRadius: 350
-        }}
-        className="mx-auto mt-10"
-        src="A.4cb642fa.jpg"
-      />
+      <div className="site-4xl-container mt-20">
+        <img
+          style={{
+            width: 350,
+            height: 350,
+            borderRadius: 350
+          }}
+          className="mx-auto mt-10"
+          src="A.4cb642fa.jpg"
+        />
+      </div>
     </div>
   )
 }
