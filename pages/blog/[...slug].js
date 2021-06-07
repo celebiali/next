@@ -66,9 +66,9 @@ export default function PostPage({ post }) {
             return <div className="flex items-center space-x-2">
               <img src={user.picture} alt={user.name} width={50} className="rounded-full"/>
             <div>
-              <div>
+              <div className="space-x-2">
                 <b>{user.name}</b>
-                <time>{DateTime.fromMillis(createdAt).toRelative()}</time>
+                <time className="text-gray-400">{DateTime.fromMillis(createdAt).toRelative()}</time>
               </div>
             <p>{text}</p>
             </div>
