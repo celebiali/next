@@ -1,0 +1,51 @@
+---
+title: Next.js nedir? Faydaları nelerdir?
+excerpt: React'ın bir kütüphanesi olan Next.js'i inceleyelim.
+date: "2021-06-10"
+---
+
+Next.js server side rendering yaparken kullanılan bir framework'tür. Next.js kullanmak istemeyip kendiniz yapmak isterseniz webpack, babel ve express ile ilgili tanımlamaları yapılandırmaları yapmamız gerekebilir.
+Next.js ile uygulamalarımız hem daha performanslı hem de SEO uyumlu olmuş oluyor.
+
+<b>SSR ve CSR</b>
+
+
+Kelime anlamı olarak CSR (Client Side Rendering), yazdığımız kodların kullanıcı tarafında render edilmesi anlamına geliyor ki bununla alakalı yazının devamında söyleyeceklerim olacak. SSR (Server Side Rendering) ise yazdığımız kodların sunucu tarafında render edilmesi anlamına geliyor.
+
+<b>Next.js bize neler sunuyor?</b>
+
+Next’in varsayılan CSS yaklaşımı styled.jsx olarak adlandırılıyor. Yani stillendirmek istediğiniz elementin alt etiketini <style/> olarak belirleyerek üst elemente stil verebiliyorsunuz ve bu stillendirmelerin hepsini derleyerek tek bir dosya altında tutuyor. Yani basit mantıkla inline css yazıyorsunuz ama işiniz bittiğinde o sizin için bir style.css çıkartmış oluyor. Yani şu şekilde;
+
+``` js
+const MyComponent = _ =>
+<div>
+  <p>Alttaki stil sadece bu yazıya özeldir!</p>
+  <style jsx>{`p { color: red; }`}</style>
+</div>
+```
+HTML çıktısı ise şuna benzer bir şey oluyor;
+
+``` js
+<p data-jsx="123456789">Alttaki stil sadece bu yazıya özeldir!</p> <style>p[data-jsx="123456789"]</style>
+```
+
+
+
+<b>Routing / Pages</b>
+
+
+Next.js’in sihirli işlerinden birisi de Route mantığı. Proje dizinindeki pages klasörü içerisine eklemiş olduğumuz her bir dosya tarayıcıda o isimle bir url oluşturuyor. Mesela ./pages/iletisim.js adında bir dosyanız varsa, hiç bir ek ayara gerek duymadan tarayıcınızdan siteadi.com/iletisim adresine gittiğinizde direkt olarak dosyaya ulaşmış oluyorsunuz.
+Ayrıca dinamik parametreli bir url yapısına ihtiyacınız var ise o da şu şekilde;
+
+``` js
+/pages
+∟ /users
+∟ index.js
+[username].js
+```
+
+Üstteki hiyerarşi de user klasörümüz ve altında bir de index bulunmakta. index.js içerisinde kullanıcı listemiz olduğu varsayarsak tarayıcımızdan siteadi.com/users adresine gittiğimizde kullanıcı listemizi ekrana basmış olacağız. Fakat içerisindeki kullanıcılara da dinamik olarak parametre ile erişmek istersek köşeli parantez yardımımıza koşuyor. Bu kullanım users klasörü altında dinamik değişken bir url yapımız olduğunu ve users/serhanozcan şeklinde bir parametre isteği ile çalışması gerektiğini söylüyoruz.
+Tüm bunların dışında bir de Next.js’in getInitialProps adında bir lifecycle hook’u bulunmakta. Bu sayede sayfalardan componentlere kolay bir şekilde props gönderebiliyorsunuz.
+
+Code Splitting
+Next.js otomatik olarak code splitting işlemini yapıyor. Peki nedir bu code splitting. Aslında çevirisine bakarsak ne olduğunu açıkça söylüyor. Kod bölme işlemi. Yani herhangi bir sayfanın sadece ihtiyacı olan kod bloklarını çalıştırıyor ve bunu her seferinde kendisi otomatik yapıyor.

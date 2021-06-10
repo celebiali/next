@@ -11,6 +11,9 @@ function MyApp({ Component, pageProps }) {
     >
 
     <div className="antialiased text-gray-700">
+      <style jsx>{
+      `@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap');`}
+      </style>
       <Header />
       <main className="mt-6 mb-20">
         <Component {...pageProps} />

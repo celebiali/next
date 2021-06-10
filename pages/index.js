@@ -1,9 +1,8 @@
 function HomePage() {
   return (
-
-      <div className="site-container">
+     <div className="site-container">
         <div className="space-y-4">
-          <h1 className="text-2xl font-bold ">
+          <h1 className="text-2xl font-bold">
             Ben Ali ÇELEBİ. Bilgisayar Mühendisiyim. Frontend alanında kendimi
             geliştiriyorum. Alanımla ilgili öğrendiğim bilgileri burada paylaşacağım.
           </h1>
