@@ -1,0 +1,81 @@
+---
+title:   SessionStorage ve LocalStorage
+excerpt: SessionStorage ve LocalStorage nedir? Kavramları inceleyelim.
+date: "2021-06-19"
+---
+
+Javascript uygulamalarında herhangi bir veri tabanı kullanmıyorsak, Session Storage ve Local Storage'ı kullanabiliriz. Bu iki kavramın çalışma mantığı aynıdır.
+
+<b>Farkları Nedir?</b>
+
+Local Storage'ı kullandığımız zaman değerleri silmezsek eğer sabit olarak kalır. Browser'ı kapatsak bile silinmez. Session Storage ise oturum açık kaldığı sürece çalışır. Yani browser'ı kapattığımız zaman veriler silinir.
+
+
+<b>Session Storage Kullanımı</b>
+
+
+``` js
+// Save data to sessionStorage
+sessionStorage.setItem('key', 'value');
+
+// Get saved data from sessionStorage
+let data = sessionStorage.getItem('key');
+
+// Remove saved data from sessionStorage
+sessionStorage.removeItem('key');
+
+// Remove all saved data from sessionStorage
+sessionStorage.clear();
+```
+
+<b>Sayfa yenilemelerinde metin kaydetme</b>
+
+Aşağıdaki örnek, bir metin alanının içeriğini otomatik olarak kaydeder ve tarayıcı yenilenirse, hiçbir yazının kaybolmaması için metin alanı içeriğini geri yükler.
+
+``` js
+// Get the text field that we're going to track
+let field = document.getElementById("field");
+
+// See if we have an autosave value
+// (this will only happen if the page is accidentally refreshed)
+if (sessionStorage.getItem("autosave")) {
+  // Restore the contents of the text field
+  field.value = sessionStorage.getItem("autosave");
+}
+
+// Listen for changes in the text field
+field.addEventListener("change", function() {
+  // And save the results into the session storage object
+  sessionStorage.setItem("autosave", field.value);
+});
+```
+
+<b>Local Storage Kullanımı</b>
+
+``` js
+myStorage = window.localStorage;
+```
+
+Aşağıdaki kod parçası, geçerli etki alanının Local Storage nesnesine erişir ve kullanarak ona bir veri ekler.
+
+``` js
+localStorage.setItem('myCat', 'Tom');
+```
+
+tanımlanan localStorage'ı görmek için:
+
+``` js
+const cat = localStorage.getItem('myCat');
+```
+
+localStorage ögeyi kaldırmak için:
+
+``` js
+localStorage.removeItem('myCat');
+```
+
+Tüm localStorage ögeleri kaldırmak için sözdizimi aşağıdaki gibidir:
+
+``` js
+localStorage.clear();
+```
