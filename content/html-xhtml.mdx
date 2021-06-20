@@ -1,0 +1,95 @@
+---
+title: HTML ile XHTML kullanımı
+excerpt: Html ile hazırlanmış sayfaların tüm cihazlarda düzgün çalışması için geliştirilmiş olan XHTML hakkında bilgi verdikten sonra HTML ile XHTML arasındaki farkları açıkladım.
+date: "2021-06-20"
+---
+
+<b>XHTML nedir?</b>
+
+XHTML, XML standartlarında yazılmış HTML dosyalarıdır.
+
+<b>Neden XHTML?</b>
+
+Çoğu web sayfasında HTML etiketleri düzgün kullanılmamaktadır.
+
+Aşağıdaki HTML kodları tarayıcıda çalışacaktır.
+
+``` html
+<html>
+<head>
+<title>Hatalı HTML kullanımı</title>
+<body>
+ <h1>Bu bir başlık
+<p>Bu bir paragraf
+</body>
+```
+
+Fakat HTML kurallarına uyulmamıştır. Bazı tarayıcılar bilgisayarda çalışır bazıları cep telefonunda ya da diğer küçük cihazlarda çalışırlar. Tüm cihaz ve tarayıcılarda düzgün HTML görünümü için XHTML kullanılmalıdır.
+
+``` html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Sayfa başlığı</title>
+</head>
+<body>
+sayfa içeriği
+</body>
+</html>
+```
+
+
+<b>XHTML etiketleri düzgün olmalıdır.</b>
+
+Aşağıdaki HTML etiketleri çalışacaktır fakat hatalı kullanılmıştır.
+
+``` html
+<b><i>Bu yazı kalın ve italik</b></i>
+```
+
+XHTML etiketleri kullanılması zorunludur.
+
+``` html
+<b><i>Bu yazı kalın ve italik</i></b>
+```
+
+XHTML etiketleri kapatılmalıdır.
+
+Yanlış kullanım
+
+``` html
+  <p>Bu bir paragraf
+  <p>Bu başka bir paragraf
+```
+Doğru kullanım
+
+``` html
+<p>Bu bir paragraf</p>
+<p>Bu başka bir paragraf</p>
+```
+
+XHTML özellikleri küçük harf ile yazılmalıdır.
+
+Yanlış kullanım
+
+``` html
+<table ID=tablo1>
+```
+Doğru kullanım
+
+``` html
+<table id="tablo1">
+```
+XHTML özellikleri tırnak ile yazılmalıdır.
+
+Yanlış kullanım
+
+``` html
+<table ID=tablo1>
+```
+Doğru kullanım
+
+``` html
+<table id="tablo1">
+```
