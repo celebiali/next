@@ -1,0 +1,100 @@
+---
+title: Css Position ve z-index Özellikleri
+excerpt: Css'te static, fixed, relative, absolute ve z-index özelliklerini İnceleyelim.
+date: "2021-06-17"
+---
+
+<ul>
+  <li><b>static:</b> Hiçbir özellik belirtilmediyse
+  </li>
+  <li><b>fixed:</b>  Sabit, tarayıcıya göre hareket etmeyen element
+  </li>
+  <li><b>relative:</b>  Normal olması gereken pozisyona göre konum belirlemek
+  </li>
+  <li><b>absolute:</b>  Koordinat belirleyerek sayfada bir yere yerleştirmek
+  </li>
+
+</ul>
+
+
+<h3>Relative</h3>
+
+``` css
+#Kutu {
+border:1px solid black;
+margin:0 auto;
+width:100px;
+}
+
+.goreceliResim {
+position:relative;
+left:-20px;
+}
+```
+
+
+goreceliResim stilinin uygulandığı bir resmi, Kutu isimli div elemanı içerisine yerleştirdiğimizde resim normalde olması gereken yerden 20px daha solda yerleşecektir.
+
+
+<h3>Absolute</h3>
+
+Bu tarz belirlenen pozisyonlar RELATIVE'den farklı olarak alan kaplamazlar. Yani sayfamızdan soyutlanmışlardır. Bağımsız hareket eden ve sadece tek bir başlangıç noktasını dikkate alan elementler gibi düşünülebilir.
+
+"Absolute" özellikli elementler diğer elementlerin üzerine geçebilir ve onları kapayabilir. bulunduğu div yada div'ler içerisinde absolute yok ise bağımsız hareket eder.
+
+
+``` css
+h2
+{
+position: absolute;
+
+      left: 100px;
+      top: 150px;
+}
+```
+
+relative özellik olmadığından body'e göre hareket eder.
+
+<h3>Static</h3>
+
+Position özelliği verilmemiş gibi davranır. Özellikleri sıfırlar.
+
+
+<h3>Fixed</h3>
+
+Position fixed özelliği genellikle header ile kullanılıyor. Yazdığımız html kodunun sabit kalması için kullanılır
+
+``` css
+   p.fixed
+   {
+      position: fixed;
+
+      top: 30px;
+      right: 5px;
+   }
+```
+
+Yukarıdaki kod çalıştırılırsa "fixed" özelliğine sahip P elementinin sağdan 5 piksel üstten 30 piksel noktasında sabit bir şekilde kaldığını göreceğiz.
+
+Bu tarz elementler bir diğerinin üzerine geçebilir ve diğerini kapatabilir.
+
+
+<h3>z-index</h3>
+
+CSS'de de z-index özelliği ile  bir HTML elementinin diğerinin üzerinde ya da altında görünmesini sağlayabiliriz.
+
+``` css
+img
+{
+position: absolute;
+
+      left: 0px;
+      top: 0px;
+
+      z-index: -1;
+}
+```
+
+Yukarıda -1 değeri ile belirttiğimiz resim diğer tüm elementlerin altında görünecektir. Çünkü diğer elementlerde bu değer belirtilmediyse 0 (sıfır) olarak algılanacaktır. Buna karşın bu element -1 olduğu için alt katman kabul edilecektir.
+
+Negatif değerler en alt katmanı pozitif değerler üst katmanları ifade eder. Örneğin biri -2 biri -5 olan iki z-index özelliğine sahip elementten daha büyük olan -2 özelliğine sahip element daha üstte görünecektir.
